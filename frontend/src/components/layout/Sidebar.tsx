@@ -14,12 +14,14 @@ import {
   Sparkles,
   Bot,
   Zap,
+  BarChart,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navigation = [
   { name: "Dashboard", href: "/", icon: LayoutDashboard },
   { name: "Campaigns", href: "/campaigns", icon: Megaphone },
+  { name: "Analytics", href: "/analytics", icon: BarChart },
   { name: "Executions", href: "/executions", icon: Zap },
   { name: "Products & Services", href: "/products", icon: Package },
   { name: "Target Audiences", href: "/audiences", icon: Users },

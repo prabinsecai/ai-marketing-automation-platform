@@ -28,7 +28,7 @@ def setup_test_env():
 
 @pytest.fixture(scope="function")
 def db_session():
-    Base.metadata.create_all(bind=engine)
+    import app.models; Base.metadata.create_all(bind=engine)
     db = TestingSessionLocal()
     try:
         yield db

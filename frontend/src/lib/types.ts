@@ -263,3 +263,10 @@ export interface ExecutionCreatePayload {
   idempotency_key?: string;
   trigger_source?: string;
 }
+
+export interface CampaignAnalyticsReport {
+  performance: any;
+  diagnostics: any[];
+  insights: any[];
+  recommendations: any[];
+}

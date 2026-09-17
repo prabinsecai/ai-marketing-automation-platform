@@ -82,3 +82,4 @@ __all__ = [
     "CampaignExecutionResponse",
     "N8NWebhookResultPayload",
 ]
+from app.schemas.analytics import CampaignMetricCreate, CampaignMetricOut, OptimizationRecommendationOut, CampaignPerformanceOut, CampaignAnalyticsReport, AIAnalyticsInsight, AIAnalyticsRecommendation

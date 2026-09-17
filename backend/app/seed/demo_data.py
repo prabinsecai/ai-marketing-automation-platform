@@ -429,7 +429,21 @@ def seed_demo_data(db: Session) -> Workspace:
         status="SUCCESS",
     )
     db.add_all([log_1, log_2])
+    db.flush()
 
+    # 10. Demo Analytics Metrics (Phase 3)
+    from app.models.analytics import CampaignMetric
+    from datetime import date, timedelta
+
+    today = date.today()
+    # Good performing metrics (Camp 3)
+    m1 = CampaignMetric(campaign_id=camp_3.id, channel="EMAIL", date=today - timedelta(days=2), impressions=5000, clicks=250, spend=50.0, leads=20, conversions=5, revenue=5000.0)
+    m2 = CampaignMetric(campaign_id=camp_3.id, channel="SOCIAL", date=today - timedelta(days=1), impressions=10000, clicks=150, spend=300.0, leads=10, conversions=1, revenue=800.0)
+
+    # Poor performing metrics (Camp 1)
+    m3 = CampaignMetric(campaign_id=camp_1.id, channel="ADVERTISEMENT", date=today - timedelta(days=3), impressions=20000, clicks=80, spend=1200.0, leads=2, conversions=0, revenue=0.0)
+
+    db.add_all([m1, m2, m3])
     db.commit()
     logger.info("Demo data successfully seeded.")
     return workspace

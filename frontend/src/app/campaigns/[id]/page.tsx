@@ -13,6 +13,7 @@ import {
   Zap,
   RefreshCw,
   AlertTriangle,
+  BarChart,
 } from "lucide-react";
 import { api } from "@/lib/api";
 import { CampaignDetail, ContentAsset, CampaignExecution } from "@/lib/types";
@@ -245,6 +246,17 @@ export default function CampaignDetailPage({ params }: PageProps) {
             >
               {isExecutable ? "Execute Campaign (LangGraph + n8n)" : "Execute Campaign (Approval Required)"}
             </Button>
+            
+            {/* Phase 3: Analytics Link */}
+            <Link href={`/campaigns/${campaign.id}/analytics`}>
+              <Button
+                variant="outline"
+                size="sm"
+                icon={<BarChart className="w-4 h-4" />}
+              >
+                Analytics & ROI
+              </Button>
+            </Link>
           </div>
         </div>
       </div>

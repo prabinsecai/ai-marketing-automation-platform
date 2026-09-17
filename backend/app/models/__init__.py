@@ -9,6 +9,7 @@ from app.models.approval import Approval, ApprovalAction
 from app.models.ai_log import AILog
 from app.models.execution import CampaignExecution, ExecutionStatus
 from app.models.execution_step import ExecutionStep, StepStatus
+from app.models.analytics import CampaignMetric, CampaignEvent, OptimizationRecommendation
 
 __all__ = [
     "Workspace",
@@ -28,4 +29,7 @@ __all__ = [
     "ExecutionStatus",
     "ExecutionStep",
     "StepStatus",
+    "CampaignMetric",
+    "CampaignEvent",
+    "OptimizationRecommendation",
 ]

@@ -9,6 +9,7 @@ import {
   Approval,
   AILog,
   DashboardStats,
+  CampaignAnalyticsReport,
   CampaignExecution,
   ExecutionCreatePayload,
 } from "./types";
@@ -47,6 +48,10 @@ async function fetcher<T>(endpoint: string, options?: RequestInit): Promise<T> {
 }
 
 export const api = {
+  getCampaignAnalytics: (id: string) =>
+    fetcher<CampaignAnalyticsReport>(`/campaigns/${id}/analytics`),
+  analyzeCampaign: (id: string) =>
+    fetcher<any>(`/campaigns/${id}/analyze`, { method: 'POST' }),
   // Health
   getHealth: () => fetcher<{ status: string; service: string; version: string; llm_mode: string }>("/health"),
 

@@ -13,6 +13,7 @@ from app.api.v1.dashboard import router as dashboard_router
 from app.api.v1.demo import router as demo_router
 from app.api.v1.executions import router as executions_router
 from app.api.v1.webhooks import router as webhooks_router
+from app.api.v1.analytics import router as analytics_router
 
 api_router = APIRouter()
 
@@ -29,3 +30,4 @@ api_router.include_router(dashboard_router)
 api_router.include_router(demo_router)
 api_router.include_router(executions_router)
 api_router.include_router(webhooks_router)
+api_router.include_router(analytics_router)
