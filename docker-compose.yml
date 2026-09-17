@@ -29,6 +29,7 @@ services:
     environment:
       - DATABASE_URL=postgresql+psycopg2://postgres:postgrespassword@postgres:5432/marketing_platform
       - LLM_MODE=mock
+      - N8N_BASE_URL=http://host.docker.internal:5678
       - OPENAI_API_KEY=${OPENAI_API_KEY:-}
       - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY:-}
     ports:

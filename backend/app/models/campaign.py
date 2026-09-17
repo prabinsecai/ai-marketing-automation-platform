@@ -40,3 +40,4 @@ class Campaign(Base):
     strategy = relationship("CampaignStrategy", back_populates="campaign", uselist=False, cascade="all, delete-orphan")
     content_assets = relationship("ContentAsset", back_populates="campaign", cascade="all, delete-orphan")
     approvals = relationship("Approval", back_populates="campaign", cascade="all, delete-orphan")
+    executions = relationship("CampaignExecution", back_populates="campaign", cascade="all, delete-orphan", order_by="CampaignExecution.created_at.desc()")

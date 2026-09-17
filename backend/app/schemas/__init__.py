@@ -32,6 +32,12 @@ from app.schemas.content import (
 from app.schemas.approval import ApprovalCreate, ApprovalResponse
 from app.schemas.ai_log import AILogResponse
 from app.schemas.dashboard import DashboardStatsResponse, CampaignStatusCounts, ContentStatusCounts
+from app.schemas.execution import (
+    ExecutionCreateRequest,
+    ExecutionStepResponse,
+    CampaignExecutionResponse,
+    N8NWebhookResultPayload,
+)
 
 __all__ = [
     "WorkspaceCreate",
@@ -71,4 +77,8 @@ __all__ = [
     "DashboardStatsResponse",
     "CampaignStatusCounts",
     "ContentStatusCounts",
+    "ExecutionCreateRequest",
+    "ExecutionStepResponse",
+    "CampaignExecutionResponse",
+    "N8NWebhookResultPayload",
 ]

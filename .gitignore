@@ -39,3 +39,11 @@ yarn-error.log*
 # OS
 .DS_Store
 Thumbs.db
+
+# Next.js Build Cache
+*.tsbuildinfo
+
+# Temporary Scripts
+insert_key.py
+insert_webhook.py
+insert_workflows.py

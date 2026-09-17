@@ -11,6 +11,8 @@ from app.api.v1.approvals import router as approvals_router
 from app.api.v1.ai_logs import router as ai_logs_router
 from app.api.v1.dashboard import router as dashboard_router
 from app.api.v1.demo import router as demo_router
+from app.api.v1.executions import router as executions_router
+from app.api.v1.webhooks import router as webhooks_router
 
 api_router = APIRouter()
 
@@ -25,3 +27,5 @@ api_router.include_router(approvals_router)
 api_router.include_router(ai_logs_router)
 api_router.include_router(dashboard_router)
 api_router.include_router(demo_router)
+api_router.include_router(executions_router)
+api_router.include_router(webhooks_router)

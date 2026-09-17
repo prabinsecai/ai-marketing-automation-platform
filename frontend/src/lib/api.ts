@@ -9,6 +9,8 @@ import {
   Approval,
   AILog,
   DashboardStats,
+  CampaignExecution,
+  ExecutionCreatePayload,
 } from "./types";
 
 const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1";
@@ -149,6 +151,28 @@ export const api = {
   // Dashboard
   getDashboardStats: (workspaceId?: string) =>
     fetcher<DashboardStats>(`/dashboard/stats${workspaceId ? `?workspace_id=${workspaceId}` : ""}`),
+
+  // Phase 2: Campaign Executions
+  executeCampaign: (campaignId: string, payload?: ExecutionCreatePayload) =>
+    fetcher<CampaignExecution>(`/campaigns/${campaignId}/execute`, {
+      method: "POST",
+      body: JSON.stringify(payload || {}),
+    }),
+  listExecutions: (workspaceId?: string, campaignId?: string, status?: string) => {
+    const params = new URLSearchParams();
+    if (workspaceId) params.append("workspace_id", workspaceId);
+    if (campaignId) params.append("campaign_id", campaignId);
+    if (status) params.append("status", status);
+    const qs = params.toString();
+    return fetcher<CampaignExecution[]>(`/executions${qs ? `?${qs}` : ""}`);
+  },
+  getExecution: (id: string, workspaceId?: string) =>
+    fetcher<CampaignExecution>(`/executions/${id}${workspaceId ? `?workspace_id=${workspaceId}` : ""}`),
+  retryExecution: (id: string, workspaceId?: string) =>
+    fetcher<CampaignExecution>(`/executions/${id}/retry`, {
+      method: "POST",
+      body: JSON.stringify({ workspace_id: workspaceId }),
+    }),
 
   // Demo
   seedDemoData: () => fetcher<Workspace>("/demo/seed", { method: "POST" }),

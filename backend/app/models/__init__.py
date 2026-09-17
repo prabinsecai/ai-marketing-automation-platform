@@ -7,6 +7,8 @@ from app.models.strategy import CampaignStrategy
 from app.models.content import ContentAsset, ContentChannel, ContentStatus
 from app.models.approval import Approval, ApprovalAction
 from app.models.ai_log import AILog
+from app.models.execution import CampaignExecution, ExecutionStatus
+from app.models.execution_step import ExecutionStep, StepStatus
 
 __all__ = [
     "Workspace",
@@ -22,4 +24,8 @@ __all__ = [
     "Approval",
     "ApprovalAction",
     "AILog",
+    "CampaignExecution",
+    "ExecutionStatus",
+    "ExecutionStep",
+    "StepStatus",
 ]

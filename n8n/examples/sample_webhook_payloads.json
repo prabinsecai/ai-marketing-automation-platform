@@ -1,0 +1,52 @@
+{
+  "campaign_execution_dispatch": {
+    "execution_id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    "campaign_id": "c1a2b3c4-d5e6-7f8a-9b0c-1d2e3f4a5b6c",
+    "campaign_name": "Q4 Enterprise Cloud Migration Drive",
+    "workspace_id": "w1a2b3c4-d5e6-7f8a-9b0c-1d2e3f4a5b6c",
+    "channels": [
+      "email",
+      "linkedin",
+      "google_search"
+    ],
+    "assets": [
+      {
+        "id": "a1b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6d",
+        "channel": "email",
+        "title": "Modernize Your Infrastructure with 99.99% SLA",
+        "body": "Dear Enterprise Leader,\n\nLegacy infrastructure is costing your enterprise up to 40% more in maintenance overhead..."
+      },
+      {
+        "id": "a2b2c3d4-e5f6-7a8b-9c0d-1e2f3a4b5c6e",
+        "channel": "linkedin",
+        "title": "Cloud Migration Playbook 2026",
+        "body": "Are you prepared for the next wave of cloud scalability? Discover our automated migration framework."
+      }
+    ],
+    "dispatched_at": "2026-09-14T22:00:00.000Z"
+  },
+  "n8n_callback_success": {
+    "execution_id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    "campaign_id": "c1a2b3c4-d5e6-7f8a-9b0c-1d2e3f4a5b6c",
+    "status": "SUCCESS",
+    "n8n_execution_id": "n8n-exec-98741",
+    "channel_results": {
+      "email": {
+        "status": "DISPATCHED",
+        "recipients_targeted": 120,
+        "gateway_message_id": "msg-882319"
+      },
+      "linkedin": {
+        "status": "SCHEDULED",
+        "post_id": "urn:li:share:991203"
+      }
+    }
+  },
+  "n8n_callback_failure": {
+    "execution_id": "9b1deb4d-3b7d-4bad-9bdd-2b0d7b3dcb6d",
+    "campaign_id": "c1a2b3c4-d5e6-7f8a-9b0c-1d2e3f4a5b6c",
+    "status": "FAILED",
+    "error": "Rate limit exceeded on LinkedIn Marketing API (429)",
+    "n8n_execution_id": "n8n-exec-98742"
+  }
+}

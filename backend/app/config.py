@@ -5,7 +5,7 @@ from pydantic_settings import BaseSettings, SettingsConfigDict
 
 class Settings(BaseSettings):
     PROJECT_NAME: str = "AI Marketing Automation & Campaign Intelligence Platform"
-    VERSION: str = "1.0.0"
+    VERSION: str = "2.0.0"
     API_V1_STR: str = "/api/v1"
 
     # Environment
@@ -14,7 +14,6 @@ class Settings(BaseSettings):
 
     # Database
     DATABASE_URL: str = "postgresql+psycopg2://postgres:postgres@localhost:5432/marketing_platform"
-    # Fallback to sqlite if postgres is not reachable or in test mode
     DATABASE_FALLBACK_SQLITE: bool = True
     SQLITE_DB_PATH: str = "sqlite:///./marketing_platform.db"
 
@@ -37,6 +36,17 @@ class Settings(BaseSettings):
     # AI Execution Config
     AI_TIMEOUT_SECONDS: int = 45
     AI_MAX_RETRIES: int = 2
+
+    # Phase 2: Local n8n Integration & Execution Config
+    N8N_BASE_URL: str = "http://localhost:5678"
+    N8N_WEBHOOK_CAMPAIGN_EXECUTE: str = "/webhook/campaign-execute"
+    N8N_WEBHOOK_LEAD_FOLLOWUP: str = "/webhook/lead-followup"
+    N8N_WEBHOOK_MOCK_EMAIL: str = "/webhook/mock-email"
+    N8N_WEBHOOK_MOCK_CRM: str = "/webhook/mock-crm"
+    N8N_WEBHOOK_SECRET: str = "marketing-automation-n8n-secret"
+    MAX_EXECUTION_RETRIES: int = 3
+    N8N_TIMEOUT_SECONDS: int = 30
+    BACKEND_PUBLIC_URL: str = "http://localhost:8000"
 
     model_config = SettingsConfigDict(
         env_file=".env",

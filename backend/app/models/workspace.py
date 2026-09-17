@@ -24,3 +24,4 @@ class Workspace(Base):
     campaigns = relationship("Campaign", back_populates="workspace", cascade="all, delete-orphan")
     approvals = relationship("Approval", back_populates="workspace", cascade="all, delete-orphan")
     ai_logs = relationship("AILog", back_populates="workspace", cascade="all, delete-orphan")
+    executions = relationship("CampaignExecution", back_populates="workspace", cascade="all, delete-orphan")

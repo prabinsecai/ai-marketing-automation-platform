@@ -206,3 +206,60 @@ export interface DashboardStats {
   recent_campaigns: Campaign[];
   recent_ai_activity: AILog[];
 }
+
+export type ExecutionStatusType =
+  | "PENDING"
+  | "RUNNING"
+  | "SUCCESS"
+  | "FAILED"
+  | "RETRYING"
+  | "ESCALATED";
+
+export type StepStatusType = "RUNNING" | "SUCCESS" | "FAILED" | "SKIPPED";
+
+export interface ExecutionStep {
+  id: string;
+  execution_id: string;
+  step_name: string;
+  step_type: string;
+  status: StepStatusType;
+  input_data: Record<string, any>;
+  output_data: Record<string, any>;
+  error_message?: string;
+  started_at: string;
+  completed_at?: string;
+  created_at: string;
+}
+
+export interface AgentTraceItem {
+  node: string;
+  timestamp: string;
+  message: string;
+  details?: Record<string, any>;
+}
+
+export interface CampaignExecution {
+  id: string;
+  campaign_id: string;
+  workspace_id: string;
+  status: ExecutionStatusType;
+  idempotency_key: string;
+  retry_count: number;
+  max_retries: number;
+  n8n_execution_id?: string;
+  n8n_workflow_id?: string;
+  error_message?: string;
+  agent_trace: AgentTraceItem[];
+  trigger_source: string;
+  started_at?: string;
+  completed_at?: string;
+  created_at: string;
+  updated_at: string;
+  steps: ExecutionStep[];
+}
+
+export interface ExecutionCreatePayload {
+  workspace_id?: string;
+  idempotency_key?: string;
+  trigger_source?: string;
+}

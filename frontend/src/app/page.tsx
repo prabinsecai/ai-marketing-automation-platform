@@ -10,14 +10,16 @@ import {
   ArrowRight,
   TrendingUp,
   Bot,
+  Zap,
 } from "lucide-react";
 import { api } from "@/lib/api";
-import { DashboardStats } from "@/lib/types";
+import { DashboardStats, CampaignExecution } from "@/lib/types";
 import { Card, Badge, Button } from "@/lib/ui";
 import { formatDate } from "@/lib/utils";
 
 export default function DashboardPage() {
   const [stats, setStats] = useState<DashboardStats | null>(null);
+  const [executions, setExecutions] = useState<CampaignExecution[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
@@ -29,8 +31,12 @@ export default function DashboardPage() {
     try {
       setLoading(true);
       setError(null);
-      const data = await api.getDashboardStats();
+      const [data, execList] = await Promise.all([
+        api.getDashboardStats(),
+        api.listExecutions(),
+      ]);
       setStats(data);
+      setExecutions(execList);
     } catch (err: any) {
       console.error("Dashboard error:", err);
       setError(err.message || "Failed to load dashboard data");
@@ -75,14 +81,19 @@ export default function DashboardPage() {
             <h1 className="text-xl font-bold text-white tracking-tight">
               Marketing Intelligence Dashboard
             </h1>
-            <Badge variant="brand">Phase 1 Live</Badge>
+            <Badge variant="brand">Phase 2 Live • LangGraph + n8n</Badge>
           </div>
           <p className="text-xs text-zinc-400 max-w-2xl leading-relaxed">
             Manage your verified products, target audience personas, AI strategy formulation,
-            multi-channel copy generation, and stakeholder approval pipelines from real database records.
+            multi-channel copy generation, and LangGraph-driven autonomous campaign execution through local n8n.
           </p>
         </div>
         <div className="flex items-center gap-3">
+          <Link href="/executions">
+            <Button variant="outline" size="sm" icon={<Zap className="w-4 h-4 text-amber-500" />}>
+              Live Executions ({executions.length})
+            </Button>
+          </Link>
           <Link href="/campaigns">
             <Button variant="primary" size="sm" icon={<Megaphone className="w-4 h-4" />}>
               View Campaigns
